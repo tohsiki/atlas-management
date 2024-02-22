@@ -24,20 +24,21 @@ class RegisterPostRequest extends FormRequest
     public function rules()
     {
         return [
-               'over_name' => 'required|string|max:10',
-                'under_name' => 'required|string|max:10',
-                'over_name_kana' => 'required|string|max:10|regex:/^[ァ-ヶー]+$/',
-                'under_name_kana'  => 'required|string|max:10|regex:/^[ァ-ヶー]+$/',
-                'mail_address' => 'required|email|unique:users|max:100',
-                'sex' => 'required|in:1,2,3',
-                'role' => 'required|in:1,2,3,4',
-                'password' => 'required|min:8|max:30|',
-                'password_confirmation' => 'required|min:8|max:30|same:password'
+        'over_name' => 'required|string|max:10',
+        'under_name' => 'required|string|max:10',
+        'over_name_kana' => 'required|string|max:10|regex:/^[ァ-ヶー]+$/',
+        'under_name_kana'  => 'required|string|max:10|regex:/^[ァ-ヶー]+$/',
+        'mail_address' => 'required|email|unique:users|max:100',
+        'sex' => 'required|in:1,2,3',
+        'role' => 'required|in:1,2,3,4',
+        'password' => 'required|min:8|max:30|',
+        'password_confirmation' => 'required|min:8|max:30|same:password'
         ];
     }
+
    public function messages()
-{
-    return [
+    {
+        return [
         'over_name.required' => '名字は必須です。',
         'under_name.required' => '名前は必須です。',
         'over_name_kana.required' => '名字（カナ）は必須です。',
@@ -59,6 +60,6 @@ class RegisterPostRequest extends FormRequest
         'password_confirmation.min' => 'パスワード確認は8文字以上で入力してください。',
         'password_confirmation.max' => 'パスワード確認は30文字以内で入力してください。',
         'password_confirmation.same' => 'パスワード確認がパスワードと一致しません。',
-    ];
-}
+        ];
+    }
 }
