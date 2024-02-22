@@ -4,14 +4,17 @@
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
       <div class="p-3">
-        <div class="detail_inner_head">
-          <div>
+
+
+        @if(Auth::user()->id == $post->user_id)
+          <div class="detail_inner_head">
+            <div></div>
+            <div>
+              <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+              <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
+            </div>
           </div>
-          <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
-          </div>
-        </div>
+        @endif
 
         <div class="contributor d-flex">
           <p>

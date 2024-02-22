@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterPostRequest;
 use DB;
 
 use App\Models\Users\Subjects;
@@ -60,17 +61,6 @@ class RegisterController extends Controller
     public function registerPost(Request $request)
     {
         DB::beginTransaction();
-        // バリデーションの追加
-            // $this->validate($request, [
-            //    'over_name' => 'required|string|max:10',
-            //     'under_name' => 'required|string|max:10',
-            //     'over_name_kana' => 'required|string|max:10|regex:/^[ァ-ヶー]+$/',
-            //     'under_name_kana'  => 'required|string|max:10|regex:/^[ァ-ヶー]+$/',
-            //     'mail_address' => 'required|email|unique:users|max:100',
-            //     'sex' => 'required|in:男性,女性,その他',
-            //     'role' => 'required|in:講師(国語),講師(数学),教師(英語),生徒',
-            //     'password' => 'required|min:8|max:30|'
-            // ]);
         try{
             $old_year = $request->old_year;
             $old_month = $request->old_month;

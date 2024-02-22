@@ -9,17 +9,24 @@
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
+
+        <!-- コメントアイコンといいねボタンを囲ってる。 -->
         <div class="d-flex post_status">
+          <!-- コメントアイコン -->
           <div class="mr-5">
-            <i class="fa fa-comment"></i><span class=""></span>
+            <!-- コメント数のカウントを追記 -->
+            <i class="fa fa-comment"></i><span class="">{{ $post_comment->count() }}</span>
           </div>
+          <!-- いいねボタンの記述 -->
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $like->count() }}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+              <!-- いいね数のカウントを追記 -->
+            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span>{{ $like->count() }}</p>
             @endif
           </div>
+        <!-- いいねボタンの記述 　ここまで-->
         </div>
       </div>
     </div>
