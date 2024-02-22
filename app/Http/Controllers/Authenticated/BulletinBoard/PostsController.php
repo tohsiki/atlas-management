@@ -38,6 +38,7 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 
+
     public function postDetail($post_id){
         $post = Post::with('user', 'postComments')->findOrFail($post_id);
         return view('authenticated.bulletinboard.post_detail', compact('post'));
@@ -77,14 +78,19 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
+    // コメント投稿ボタンを押すと発火
     public function commentCreate(Request $request){
-        PostComment::create([
-            'post_id' => $request->post_id,
-            'user_id' => Auth::id(),
-            'comment' => $request->comment
-        ]);
-        return redirect()->route('post.detail', ['id' => $request->post_id]);
-    }
+    $validatedData = $request->validate([
+        'comment' => 'required|string|max:2500',
+    ]);
+
+    PostComment::create([
+        'post_id' => $request->post_id,
+        'user_id' => Auth::id(),
+        'comment' => $validatedData['comment']
+    ]);
+    return redirect()->route('post.detail',['id' => $request->post_id]);
+}
 
     public function myBulletinBoard(){
         $posts = Auth::user()->posts()->get();
