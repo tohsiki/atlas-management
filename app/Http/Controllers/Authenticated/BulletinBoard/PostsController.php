@@ -49,6 +49,7 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
+    // 投稿用の処理
     public function postCreate(PostFormRequest $request){
         $post = Post::create([
             'user_id' => Auth::id(),
@@ -78,10 +79,13 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
-    // コメント投稿ボタンを押すと発火
     public function commentCreate(Request $request){
     $validatedData = $request->validate([
         'comment' => 'required|string|max:2500',
+    ], [
+        'comment.required' => 'コメントは必須です。',
+        'comment.string' => 'コメントは文字で入力してください。',
+        'comment.max' => 'コメントは2500文字以内で入力してください。',
     ]);
 
     PostComment::create([

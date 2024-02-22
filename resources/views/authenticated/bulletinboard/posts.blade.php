@@ -15,7 +15,7 @@
           <!-- コメントアイコン -->
           <div class="mr-5">
             <!-- コメント数のカウントを追記 -->
-            <i class="fa fa-comment"></i><span class="">{{ $post_comment->count() }}</span>
+            <i class="fa fa-comment"></i><span class="">{{ $post->commentCounts($post->id)->count() }}</span>
           </div>
           <!-- いいねボタンの記述 -->
           <div>

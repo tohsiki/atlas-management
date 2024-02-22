@@ -24,4 +24,9 @@ class PostComment extends Model
     public function commentUser($user_id){
         return User::where('id', $user_id)->first();
     }
+
+    // コメント数のカウント
+    //  public function commentCounts($post_id){
+    //     return $this->where('like_post_id', $post_id)->get()->count();
+    // }
 }
