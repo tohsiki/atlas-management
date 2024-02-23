@@ -5,14 +5,14 @@
     <div class="m-3 detail_container">
       <div class="p-3">
 
-
         @if(Auth::user()->id == $post->user_id)
           <div class="detail_inner_head">
             <div></div>
             <div>
-              <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-              <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
-            </div>
+              <span class="edit-modal-open btn btn-danger" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+              <!-- 削除ボタンの形式は確認が必要 -->
+              <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-primary" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
+            </div>s
           </div>
         @endif
 
@@ -58,15 +58,24 @@
     </div>
   </div>
 </div>
+<!-- 投稿を編集するモーダル -->
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
     <form action="{{ route('post.edit') }}" method="post">
       <div class="w-100">
         <div class="modal-inner-title w-50 m-auto">
+          <!-- バリデーションエラーメッセージを追加する -->
+           @if($errors->has('post_title'))
+            <span class="error_message">{{ $errors->first('post_title') }}</span>
+           @endif
           <input type="text" name="post_title" placeholder="タイトル" class="w-100">
         </div>
         <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
+          <!-- バリデーションエラーメッセージを追加する -->
+          @if($errors->has('post_body'))
+            <span class="error_message">{{ $errors->first('post_body') }}</span>
+          @endif
           <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
         </div>
         <div class="w-50 m-auto edit-modal-btn d-flex">

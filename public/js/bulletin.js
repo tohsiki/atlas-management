@@ -48,6 +48,7 @@ $(function () {
     });
   });
 
+
   $('.edit-modal-open').on('click',function(){
     $('.js-modal').fadeIn();
     var post_title = $(this).attr('post_title');

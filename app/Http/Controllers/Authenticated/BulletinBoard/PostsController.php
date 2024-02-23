@@ -61,12 +61,26 @@ class PostsController extends Controller
 
     //投稿の更新
     public function postEdit(Request $request){
-        Post::where('id', $request->post_id)->update([
-            'post_title' => $request->post_title,
-            'post' => $request->post_body,
+        $validatedData = $request->validate([
+            'post_title' => 'required|string|max:100',
+            'post_body' => 'required|string|max:5000',
+        ], [
+            'post_title.required' => 'タイトルは必須です。',
+            'post_title.string' => 'タイトルは文字で入力してください。',
+            'post_title.max' => 'タイトルは100文字以内で入力してください。',
+            'post_body.required' => '本文は必須です。',
+            'post_body.string' => '本文は文字で入力してください。',
+            'post_body.max' => '本文は5000文字以内で入力してください。',
         ]);
+
+        Post::where('id', $request->post_id)->update([
+            'post_title' => $validatedData['post_title'],
+            'post' => $validatedData['post_body'],
+        ]);
+
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
+
 
     // 投稿の削除
     public function postDelete($id){
