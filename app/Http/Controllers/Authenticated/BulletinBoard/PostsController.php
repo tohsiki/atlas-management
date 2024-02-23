@@ -60,26 +60,26 @@ class PostsController extends Controller
     }
 
     //投稿の更新
-    public function postEdit(Request $request){
-        $validatedData = $request->validate([
-            'post_title' => 'required|string|max:100',
-            'post_body' => 'required|string|max:5000',
-        ], [
-            'post_title.required' => 'タイトルは必須です。',
-            'post_title.string' => 'タイトルは文字で入力してください。',
-            'post_title.max' => 'タイトルは100文字以内で入力してください。',
-            'post_body.required' => '本文は必須です。',
-            'post_body.string' => '本文は文字で入力してください。',
-            'post_body.max' => '本文は5000文字以内で入力してください。',
-        ]);
+   public function postEdit(Request $request){
+    $validatedData = $request->validate([
+        'post_title' => 'required|string|max:100',
+        'post_body' => 'required|string|max:5000',
+    ], [
+        'post_title.required' => 'タイトルは必須です。',
+        'post_title.string' => 'タイトルは文字で入力してください。',
+        'post_title.max' => 'タイトルは100文字以内で入力してください。',
+        'post_body.required' => '本文は必須です。',
+        'post_body.string' => '本文は文字で入力してください。',
+        'post_body.max' => '本文は5000文字以内で入力してください。',
+    ]);
 
-        Post::where('id', $request->post_id)->update([
-            'post_title' => $validatedData['post_title'],
-            'post' => $validatedData['post_body'],
-        ]);
+    Post::where('id', $request->post_id)->update([
+        'post_title' => $validatedData['post_title'],
+        'post' => $validatedData['post_body'],
+    ]);
 
-        return redirect()->route('post.detail', ['id' => $request->post_id]);
-    }
+    return redirect()->route('post.detail', ['id' => $request->post_id]);
+}
 
 
     // 投稿の削除
@@ -93,13 +93,17 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
-    // サブカテゴリーの追加
+    // サブカテゴリーの制作
     public function subCategoryCreate(Request $request){
-        SubCategory::create([
-            // main_category_idを追加。
+        // 受け取りたい内容：メインカテゴリーのidとname=sub_category_nameの内容
+         SubCategory::create([
+            // ここにメインカテゴリーのidを取得して書き込む処理
+            'main_category_id'=>$request->main_id,
+             // subカテゴリーの内容を書き込む処理
             'sub_category' => $request->sub_category_name]);
         return redirect()->route('post.input');
     }
+
 
 
     public function commentCreate(Request $request){
