@@ -93,6 +93,15 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
+    // サブカテゴリーの追加
+    public function subCategoryCreate(Request $request){
+        SubCategory::create([
+            // main_category_idを追加。
+            'sub_category' => $request->sub_category_name]);
+        return redirect()->route('post.input');
+    }
+
+
     public function commentCreate(Request $request){
     $validatedData = $request->validate([
         'comment' => 'required|string|max:2500',

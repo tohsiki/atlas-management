@@ -81,12 +81,13 @@ class RegisterController extends Controller
                 'password' => bcrypt($request->password)
             ]);
             $user = User::findOrFail($user_get->id);
+            //リレーションでテーブル名の指定が間違っていたのでアカウントを生成するところまでは動いていたが、見つからずに消す動きをしていた。
             $user->subjects()->attach($subjects);
             DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){
             DB::rollback();
-            return redirect()->route('loginView');
+            return redirect()->route('registerView');
         }
     }
 }

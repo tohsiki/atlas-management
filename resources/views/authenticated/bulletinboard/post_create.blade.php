@@ -34,6 +34,7 @@
   </div>
   @can('admin')
   <div class="w-25 ml-auto mr-auto">
+    <!-- if文で教師アカウントにのみ表示されるように書く。 -->
     <div class="category_area mt-5 p-5">
       <div class="">
         <p class="m-0">メインカテゴリー</p>
@@ -41,6 +42,12 @@
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
       </div>
       <!-- サブカテゴリー追加 -->
+       <div class="">
+        <p class="m-0">サブカテゴリー</p>
+        <input type="text" class="w-100" name="sub_category_name" form="CategoryRequest">
+         <optgroup label=""></optgroup>
+        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="">
+      </div>
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
     </div>
   </div>
