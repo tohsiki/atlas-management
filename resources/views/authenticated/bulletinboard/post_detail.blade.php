@@ -12,7 +12,7 @@
               <span class="edit-modal-open btn btn-danger" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
               <!-- 削除ボタンの形式は確認が必要 -->
               <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-primary" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
-            </div>s
+            </div>
           </div>
         @endif
 
