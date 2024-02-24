@@ -44,18 +44,23 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.post_detail', compact('post'));
     }
 
+    // post
     public function postInput(){
         $main_categories = MainCategory::get();
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
+
 
     // 投稿用の処理
     public function postCreate(PostFormRequest $request){
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
-            'post' => $request->post_body
+            'post' => $request->post_body,
         ]);
+        // $post→モデルのメソッド名→変数request→name名
+        $post->subCategories()->attach($request->post_category_id);
+        // 'sub_category_id'=> $request->post_category_id
         return redirect()->route('post.show');
     }
 
@@ -93,18 +98,24 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
-    // サブカテゴリーの制作
+   // サブカテゴリーの制作
     public function subCategoryCreate(Request $request){
-        // 受け取りたい内容：メインカテゴリーのidとname=sub_category_nameの内容
-         SubCategory::create([
-            // ここにメインカテゴリーのidを取得して書き込む処理
-            'main_category_id'=>$request->main_id,
-             // subカテゴリーの内容を書き込む処理
-            'sub_category' => $request->sub_category_name]);
-        return redirect()->route('post.input');
-    }
+        $validatedData = $request->validate([
+        'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
+    ], [
+        'sub_category_name.required' => 'サブカテゴリーは必須です。',
+        'sub_category_name.string' => 'サブカテゴリーは文字で入力してください。',
+        'sub_category_name.max' => 'サブカテゴリーは100文字以内で入力してください。',
+        'sub_category_name.unique' => '同じ名前のサブカテゴリーは登録できません。',
+    ]);
 
+    SubCategory::create([
+        'main_category_id' => $request->main_id,
+        'sub_category' => $validatedData['sub_category_name']
+    ]);
 
+    return redirect()->route('post.input');
+}
 
     public function commentCreate(Request $request){
     $validatedData = $request->validate([
