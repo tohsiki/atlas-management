@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'sex' => '1',
             'birth_day' => '2007-09-05',
             'role' => '2',
-            'password' => '1234567',
+            'password' => bcrypt('1234567'),
             ]);
     }
 }
