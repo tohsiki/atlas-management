@@ -11,7 +11,7 @@
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <!-- 投稿にサブカテゴリーの表示 -->
       @foreach($post->subCategories as $sub_category)
-        <span>{{ $sub_category->sub_category }}</span>
+        <p><span class="btn-info" style="font-size: 13px; border-radius:3px; padding:4px">{{ $sub_category->sub_category }}</span></p>
       @endforeach
       <div class="post_bottom_area d-flex">
         <!-- コメントアイコンといいねボタンを囲ってる。 -->

@@ -18,6 +18,7 @@ class SubCategory extends Model
 
     public function posts(){
         // postsテーブルとの多対多リレーションの定義
-         return $this->belongsToMany('App\Models\Categories\SubCategory', 'post_sub_categories','sub_category_id', 'post_id');
+         return $this->belongsToMany('App\Models\Posts\Post', 'post_sub_categories','sub_category_id', 'post_id');
+
     }
 }
