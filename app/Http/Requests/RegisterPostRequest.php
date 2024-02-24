@@ -26,10 +26,13 @@ class RegisterPostRequest extends FormRequest
         return [
         'over_name' => 'required|string|max:10',
         'under_name' => 'required|string|max:10',
-        'over_name_kana' => 'required|string|max:10|regex:/[ァ-ヴー]+/u',
-        'under_name_kana'  => 'required|string|max:10|regex:/[ァ-ヴー]+/u',
+        'over_name_kana' => 'required|string|max:30|regex:/[ァ-ヴー]+/u',
+        'under_name_kana'  => 'required|string|max:30|regex:/[ァ-ヴー]+/u',
         'mail_address' => 'required|email|unique:users|max:100',
         'sex' => 'required|in:1,2,3',
+        'old_year' => 'required|integer|min:2000|max:' . date('Y'),
+        'old_month' => 'required|integer|min:1|max:12',
+        'old_day' => 'required|integer|min:1|max:31',
         'role' => 'required|in:1,2,3,4',
         'password' => 'required|min:8|max:30|',
         'password_confirmation' => 'required|min:8|max:30|same:password'

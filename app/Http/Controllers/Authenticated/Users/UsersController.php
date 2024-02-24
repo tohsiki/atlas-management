@@ -20,7 +20,8 @@ class UsersController extends Controller
         $updown = $request->updown;
         $gender = $request->sex;
         $role = $request->role;
-        $subjects = $request->input('subjects', []);// ここで検索時の科目を受け取る
+        $subjects = $request->subjects;// ここで検索時の科目を受け取る
+        // $subjects = $request->input('subjects', []);この記述だと他の項目で検索ができなくなる。s
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
         $subjects = Subjects::all();
