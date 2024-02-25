@@ -6,6 +6,7 @@ use App\Models\Users\User;
 class CalendarView{
   private $carbon;
 
+//スクール予約確認
   function __construct($date){
     $this->carbon = new Carbon($date);
   }
@@ -39,6 +40,7 @@ class CalendarView{
       foreach($days as $day){
         $startDay = $this->carbon->format("Y-m-01");
         $toDay = $this->carbon->format("Y-m-d");
+
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="past-day border">';
         }else{

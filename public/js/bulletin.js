@@ -49,6 +49,7 @@ $(function () {
   });
 
 
+  // 投稿編集用
   $('.edit-modal-open').on('click',function(){
     $('.js-modal').fadeIn();
     var post_title = $(this).attr('post_title');
@@ -63,5 +64,25 @@ $(function () {
     $('.js-modal').fadeOut();
     return false;
   });
+
+
+  // これを予約キャンセル機能に再利用する。
+  $('.cancel-modal-open').on('click',function(){
+    $('.js-modal').fadeIn();
+    //  ここを予約キャンセル用に書き換える
+    var reserve_date = $(this).attr('data-reserve-date');
+    var reserve_part = $(this).attr('data-reserve-part');
+    var reserve_id = $(this).attr('data_reserve_id');
+    // 引数を上記のものに変える。
+    $('.modal-inner-title span').text(reserve_date);
+    $('.modal-inner-body span').text(reserve_part);
+    $('.edit-modal-hidden').val(reserve_id);
+    return false;
+  });
+  $('.js-modal-close').on('click', function () {
+    $('.js-modal').fadeOut();
+    return false;
+  });
+
 
 });

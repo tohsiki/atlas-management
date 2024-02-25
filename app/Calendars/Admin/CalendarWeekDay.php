@@ -7,6 +7,7 @@ use App\Models\Calendars\ReserveSettings;
 class CalendarWeekDay{
   protected $carbon;
 
+  // スクール予約確認
   function __construct($date){
     $this->carbon = new Carbon($date);
   }
