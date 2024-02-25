@@ -103,8 +103,19 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
-    public function mainCategoryCreate(Request $request){
-        MainCategory::create(['main_category' => $request->main_category_name]);
+    // メインカテゴリーの作成
+    public function mainCategoryCreate(Request $request)
+    {
+        $validatedData = $request->validate([
+            'main_category_name' => 'required|string|max:100|unique:main_categories,main_category',
+        ], [
+            'main_category_name.required' => 'メインカテゴリーは必須です。',
+            'main_category_name.string' => 'メインカテゴリーは文字で入力してください。',
+            'main_category_name.max' => 'メインカテゴリーは100文字以内で入力してください。',
+            'main_category_name.unique' => '同じ名前のメインカテゴリーは登録できません。',
+        ]);
+
+        MainCategory::create(['main_category' => $validatedData['main_category_name']]);
         return redirect()->route('post.input');
     }
 
