@@ -73,6 +73,7 @@ class CalendarView{
                 $reservePart = "3部参加";
             }
              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;color:black">' . $reservePart . '</p>';
+             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
             // 予約している今と未来
                          // ボタンに選択された予約日とreservePartをデータ属性として追加し、モーダルで取得して表示する
@@ -80,7 +81,7 @@ class CalendarView{
             value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'"
             data-reserve-part="'. $reservePart .'"
             data-reserve-date="'. $day->everyDay() .'">'. $reservePart .'</button>';
-
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else{
           //予約をしていない場合
@@ -88,10 +89,10 @@ class CalendarView{
           if($startDay <= $day->everyDay() && $toDay >$day->everyDay()){
             //予約をしていない過去
               $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;color:black">受付終了</p>';
+              $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             }else{
             //予約をしていない未来
              $html[] = $day->selectPart($day->everyDay());
-             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }
         $html[] = $day->getDate();

@@ -20,7 +20,7 @@
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
-    <!-- 送り先をキャンセルするところに変更する -->
+    <!-- 送り先をキャンセルするところに変更する 　idも添えて送れるようにしたい。-->
     <form action="{{ route('deleteParts') }}" method="post">
       <div class="w-100">
         <div class="modal-inner-title w-50 m-auto">
