@@ -35,7 +35,7 @@
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-primary d-inline-block" href="">閉じる</a>
           <!-- idを受け取る。　ここは投稿の編集画面から引っ張れる？ -->
-          <input type="hidden" class="edit-modal-hidden" name="reserve_setting_id" value="">
+          <input type="hidden" class="edit-modal-hidden" name="reserve_id" value="">
           <input type="submit" class="btn btn-danger d-block" value="キャンセル">
         </div>
       </div>

@@ -75,12 +75,15 @@ class CalendarView{
              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;color:black">' . $reservePart . '</p>';
              $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
+            $reserveId = $day->authReserveDate($day->everyDay())->first()->id;
+            // dd($reserveId);
             // 予約している今と未来
                          // ボタンに選択された予約日とreservePartをデータ属性として追加し、モーダルで取得して表示する
             $html[] = '<button type="submit" class="cancel-modal-open btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px"
             value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'"
             data-reserve-part="'. $reservePart .'"
-            data-reserve-date="'. $day->everyDay() .'">'. $reservePart .'</button>';
+            data-reserve-date="'. $day->everyDay() .'"
+            data-reserve-id="' .$reserveId. '">'. $reservePart .'</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else{

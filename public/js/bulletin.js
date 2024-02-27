@@ -72,7 +72,7 @@ $(function () {
     //  ここを予約キャンセル用に書き換える
     var reserve_date = $(this).attr('data-reserve-date');
     var reserve_part = $(this).attr('data-reserve-part');
-    var reserve_id = $(this).attr('data_reserve_id');
+    var reserve_id = $(this).attr('data-reserve-id');
     // 引数を上記のものに変える。
     $('.modal-inner-title span').text(reserve_date);
     $('.modal-inner-body span').text(reserve_part);
