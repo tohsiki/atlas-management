@@ -15,7 +15,6 @@
     </div>
   </div>
 </div>
-
 <!-- 予約をキャンセルするモーダルに変える -->
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>

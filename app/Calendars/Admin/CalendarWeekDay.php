@@ -34,14 +34,22 @@ class CalendarWeekDay{
     if($one_part){
       // ここのhtmlに各部数への参加人数を表示する。（count）
       // aタグを追加して部数をクリックすると予約詳細画面に推移するように設定する。
-      $html[] = '<p class="day_part m-0 pt-1"><a href="">1部</a></p>';
-      // $html[] =
-    }
+      $html[] = '<div class="d-flex" style="justify-content: space-between;">';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="/calendar/' . $ymd . '/1">1部</a></p>';
+      $html[] = '<p class="day_part m-0 pt-1">'.$one_part->users()->count().'</p>';
+      $html[] = '</div>';
+        }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1"><a href="">2部</a></p>';
+      $html[] = '<div class="d-flex" style="justify-content: space-between;">';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="/calendar/' . $ymd . '/2">2部</a></p>';
+      $html[] = '<p class="day_part m-0 pt-1">'.$two_part->users()->count().'</p>';
+      $html[] = '</div>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1"><a href="">3部</a></p>';
+      $html[] = '<div class="d-flex" style="justify-content: space-between;">';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="/calendar/' . $ymd . '/3">3部</a></p>';
+      $html[] = '<p class="day_part m-0 pt-1">'.$three_part->users()->count().'</p>';
+      $html[] = '</div>';
     }
     $html[] = '</div>';
 

@@ -76,7 +76,6 @@ $(function () {
     // 引数を上記のものに変える。
     $('.modal-inner-title span').text(reserve_date);
     $('.modal-inner-body span').text(reserve_part);
-    // ここでdata属性に入れたidをモーダルに送る。
     $('.edit-modal-hidden').val(reserve_id);
     return false;
   });

@@ -41,18 +41,13 @@ class CalendarsController extends Controller
 
     // 予約をキャンセルする機能
     public function delete(Request $request){
-        // $getPart = $request->setting_part; // リクエストからgetPartを取得します。
-        // $getDate = $request->setting_reserve;
-        // dd($request,$getPart,$getDate);
-        // $getPart = $request->id->ReserveSettings()->;
-        $reserve_settings = ReserveSettings::where('reserve_setting_id', $request )->first();
-        // $getDate = $request->getData;
-        // $getPart = $request->id;
-        // 部数を戻す記述が必要？
-        // $reserve_settings = ReserveSettings::where('setting_reserve', $getDate )->where('setting_part', $getPart)->first();
+        // dd($request);
+        $getId = $request->input('reserve_id');
+
+        $reserve_settings = ReserveSettings::where('id', $getId)->first();
 
         $reserve_settings->increment('limit_users');
         $reserve_settings->users()->detach(Auth::id());
-        return redirect()->route('calendar.general.show');
+        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 }
