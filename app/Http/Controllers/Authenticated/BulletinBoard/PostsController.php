@@ -123,7 +123,10 @@ class PostsController extends Controller
     public function subCategoryCreate(Request $request){
         $validatedData = $request->validate([
         'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
+        'main_id' => 'required|exists:sub_categories,id',
     ], [
+        'main_id.required' => 'メインカテゴリーの選択は必須です。',
+        'main_id.exists' => '指定されたメインカテゴリーは存在しません。',
         'sub_category_name.required' => 'サブカテゴリーは必須です。',
         'sub_category_name.string' => 'サブカテゴリーは文字で入力してください。',
         'sub_category_name.max' => 'サブカテゴリーは100文字以内で入力してください。',
@@ -131,7 +134,7 @@ class PostsController extends Controller
     ]);
 
     SubCategory::create([
-        'main_category_id' => $request->main_id,
+        'main_category_id' => $validatedData['main_id'],
         'sub_category' => $validatedData['sub_category_name']
     ]);
 

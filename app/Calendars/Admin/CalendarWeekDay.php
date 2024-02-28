@@ -32,13 +32,16 @@ class CalendarWeekDay{
 
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      // ここのhtmlに各部数への参加人数を表示する。（count）
+      // aタグを追加して部数をクリックすると予約詳細画面に推移するように設定する。
+      $html[] = '<p class="day_part m-0 pt-1"><a href="">1部</a></p>';
+      // $html[] =
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="">2部</a></p>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="">3部</a></p>';
     }
     $html[] = '</div>';
 
