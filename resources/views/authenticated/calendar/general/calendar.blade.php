@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="text-right w-75 m-auto">
-      <input type="submit" class="btn btn-primary" value="予約する" form="reserveParts">
+      <input type="submit" class="btn btn-primary" value="予約する" form="reserveParts" onclick="return confirm('予約してもよろしいでしょうか？')">
     </div>
   </div>
 </div>
