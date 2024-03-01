@@ -1,5 +1,4 @@
 @extends('layouts.sidebar')
-
 @section('content')
 <div class="board_area w-100 border m-auto d-flex">
   <div class="post_view w-75 mt-5">
@@ -11,11 +10,11 @@
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <!-- 投稿にサブカテゴリーの表示 -->
       @foreach($post->subCategories as $sub_category)
-        <p><span class="btn-info" style="font-size: 13px; border-radius:3px; padding:4px">{{ $sub_category->sub_category }}</span></p>
+        <p><span class="btn-info" style="font-size: 13px; border-radius:5px; padding:4px">{{ $sub_category->sub_category }}</span></p>
       @endforeach
       <div class="post_bottom_area d-flex">
         <!-- コメントアイコンといいねボタンを囲ってる。 -->
-        <div class="d-flex post_status">
+        <div class="d-flex post_status" style="padding-left:590px;">
           <!-- コメントアイコン -->
           <div class="mr-5">
             <!-- コメント数のカウントを追記 -->
@@ -43,7 +42,7 @@
         <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
         <input type="submit" value="検索" form="postSearchRequest">
       </div>
-      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
+      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest" style="background: #e17397; opacity: 0.75;">
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
       <ul>
         @foreach($categories as $category)
