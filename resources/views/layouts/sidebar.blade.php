@@ -18,18 +18,62 @@
 
 <body class="all_content">
   <div class="d-flex">
-    <div class="sidebar">
+    <div class="sidebar" style="">
       @section('sidebar')
-      <!-- お家のアイコンを追加 -->
-      <p><img src="{{ asset('image/house-solid.svg') }}" style="width:20px; color:white;" alt="" ><a href="{{ route('top.show') }}">トップ</a></p>
-      <p><a href="/logout">ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
-      @if(in_array(Auth::user()->role, [1, 2, 3]))
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
-      @endif
-      <p><a href="{{ route('post.show') }}">掲示板</a></p>
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <!-- トップ -->
+      <div class="d-flex" style="align-items:left; justify-content:space-between; margin-left:5px;">
+        <a href="{{ route('top.show') }}" style="text-decoration: none; color:white;" class="d-flex">
+          <img src="{{ asset('image/house-solid.svg') }}" style="width:20px; margin-right:10px;">
+          <p style=" font-size:15px;margin-top:1rem;">トップ</p>
+        </a>
+      </div>
+      <!-- ログアウト -->
+      <div class="d-flex" style="align-items:left; justify-content:space-between; margin-left:5px;">
+        <a href="/logout" style="text-decoration: none; color:white;" class="d-flex">
+          <img src="{{ asset('image/arrow-right-from-bracket-solid.svg') }}" style="width:20px; margin-right:10px;">
+          <p style=" font-size:15px;margin-top:1rem;">ログアウト</p>
+        </a>
+      </div>
+      <!-- スクール予約 -->
+      <div class="d-flex" style="align-items:left; justify-content:space-between; margin-left:5px;">
+        <a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}" style="text-decoration: none; color:white;" class="d-flex">
+          <img src="{{ asset('image/calendar-days-solid.svg') }}" style="width:20px; margin-right:10px;">
+          <p style=" font-size:15px;margin-top:1rem;">スクール予約</p>
+        </a>
+      </div>
+      <!-- スクール予約確認 -->
+    @if(in_array(Auth::user()->role, [1, 2, 3]))
+      <div class="d-flex" style="align-items:left; justify-content:space-between; margin-left:5px;">
+        <a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}" style="text-decoration: none; color:white;" class="d-flex">
+          <img src="{{ asset('image/calendar-check-solid.svg') }}" style="width:20px; margin-right:10px;">
+          <p style=" font-size:15px;margin-top:1rem;">スクール予約確認</p>
+        </a>
+      </div>
+      <!-- スクール枠登録 -->
+      <div class="d-flex" style="align-items:left; justify-content:space-between; margin-left:5px;">
+        <a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}" style="text-decoration: none; color:white;" class="d-flex">
+          <img src="{{ asset('image/calendar-day-solid.svg') }}" style="width:20px; margin-right:10px;">
+          <p style=" font-size:15px;margin-top:1rem;">スクール枠登録</p>
+        </a>
+      </div>
+    @endif
+
+      <!-- 掲示板 -->
+      <div class="d-flex" style="align-items:left; justify-content:space-between; margin-left:5px;">
+        <a href="{{ route('post.show') }}" style="text-decoration: none; color:white;" class="d-flex">
+          <img src="{{ asset('image/message-solid.svg') }}" style="width:20px; margin-right:10px;">
+          <p style=" font-size:15px;margin-top:1rem;">掲示板</p>
+        </a>
+      </div>
+
+      <!-- ユーザー検索 -->
+      <div class="d-flex" style="align-items:center; justify-content:space-between; margin-left:5px;">
+        <a href="{{ route('user.show') }}" style="text-decoration: none; color:white;" class="d-flex">
+          <img src="{{ asset('image/users-solid.svg') }}" style="width:20px; margin-right:10px;">
+          <p style=" font-size:15px;margin-top:1rem;">ユーザー検索</p>
+      </a>
+      </div>
+
       @show
     </div>
     <div class="main-container">

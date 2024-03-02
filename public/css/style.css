@@ -13,13 +13,40 @@ li{
   list-style:none;
 }
 
+a{
+  text-decoration: none;
+}
+
+.logo-image{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* サイドバー */
 .sidebar{
-  width:150px;
+  width:16%;
   height:100vh;
   background-color:#03AAD2;
   font-weight:bold;
+  text-decoration: none;
+  height: auto;
 }
+
+
+.sidebar{
+  height: auto;
+}
+
+/* .sidebar::after{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  content: "";
+  background-color:#03AAD2;
+  z-index: -1;
+} */
+
 .main-container{
   width:100%;
 }
@@ -194,37 +221,64 @@ li{
   background:#999;
   color:#FFF;
 }
+
+.sub_category_btn{
+  margin-left: 10px;
+  font-size:14px;
+  border:none;
+  background:none;
+  margin-bottom:10px;
+  width:80%;
+}
+
 .main_categories span,
 .sub_categories li input{
   list-style:none;
   cursor:pointer;
 }
 
+
+/* カテゴリー検索用 */
+.category_conditions span{
+  cursor:pointer;
+}
+.category_conditions_inner{
+  display:none;
+}
+
+.search_content{
+  display: flex;
+  justify-content: center;
+}
+
 /* ユーザー検索 */
 .reserve_users_area{
   display:flex;
   flex-wrap:wrap;
-  width:800px;
+  width:90%;
   margin:10px auto;
   height:80vh;
   overflow: scroll;
   padding:10px;
-  background:#FFF;
+  /* background:#FFF; */
   border-radius:5px;
+  margin-top: 20px;
+  margin-left: 15px;
 }
 .reserve_users_area span{
   font-size:12px;
 }
 .one_person{
-  width:250px;
-  height:250px;
+  background:#FFF;
+  width:220px;
+  height:230px;
+  margin: 5px;
 }
 .search_conditions span{
   cursor:pointer;
 }
 .search_conditions_inner{
   display:none;
-  background:#FFF;
 }
 .subject_edit_btn{
   font-size:12px;
@@ -233,4 +287,153 @@ li{
 }
 .subject_inner{
   display:none;
+}
+
+.reset-btn{
+  background: none;
+  border: none;
+}
+
+.user-select{
+  display:flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+/* .reserve-table .style-table2{
+ width: 600px;
+} */
+
+.table1.m-auto2.border3{
+  width: 500px;
+}
+
+.search-button{
+    position: relative;
+    overflow: hidden;
+}
+
+.search-list{
+  margin-top:10px;
+}
+
+.search-label{
+  display:flex;flex-direction: column;
+}
+
+ .menu-trigger {
+    position: relative;
+    width: 25px;
+    height: 42px;
+    cursor: pointer;
+  }
+
+  .menu-trigger span {
+    display: block;
+    position: absolute;
+    width: 12px;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.8);
+    border-radius: 2px;
+    transition: .35s ease-in-out;
+  }
+
+
+.menu-trigger span:nth-child(1){
+  top: 20px;
+  transform: rotate(-113deg);
+}
+
+.menu-trigger span:nth-child(2) {
+  top: 20px;
+  left: 5px;
+  transform: rotate(113deg);
+}
+
+/* ここまで記述済み */
+/* 1番上のspan要素をマイナス45度方向に回す */
+.menu-trigger.active span:nth-child(1) {
+    top: 20px;
+    transform: rotate(-65deg);
+}
+
+/* 2番目と3番目のspan要素を45度方向に回す */
+.menu-trigger.active span:nth-child(2) {
+    top: 20px;
+    left: 5px;
+    transform: rotate(65deg);
+}
+
+
+.profile-title{
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+.profile-title h3{
+  font-weight: 200;
+}
+
+
+ .subject-trigger {
+    position: relative;
+    width: 25px;
+    height: 42px;
+    cursor: pointer;
+  }
+
+  .subject-trigger span {
+    display: block;
+    position: absolute;
+    width: 12px;
+   border-bottom: solid 2px  #17a2b8;
+    color: #00FF00; /* infoカラーに */
+    border-radius: 2px;
+    transition: .35s ease-in-out;
+  }
+
+.subject-trigger span:nth-child(1){
+  top: 20px;
+  transform: rotate(-113deg);
+}
+
+.subject-trigger span:nth-child(2) {
+  top: 20px;
+  left: 5px;
+  transform: rotate(113deg);
+}
+
+
+
+.subject-trigger span:nth-child(1){
+  top: 20px;
+  transform: rotate(-113deg);
+}
+
+.subject-trigger span:nth-child(2) {
+  top: 20px;
+  left: 5px;
+  transform: rotate(113deg);
+}
+
+/* ここまで記述済み */
+/* 1番上のspan要素をマイナス45度方向に回す */
+.subject-trigger.active span:nth-child(1) {
+    top: 20px;
+    transform: rotate(-65deg);
+}
+
+/* 2番目と3番目のspan要素を45度方向に回す */
+.subject-trigger.active span:nth-child(2) {
+    top: 20px;
+    left: 5px;
+    transform: rotate(65deg);
+}
+
+/*  */
+
+/* 予約詳細確認ページ */
+
+.reserve-table{
+  border:3px solid white;
+  border-radius: 25px;
 }

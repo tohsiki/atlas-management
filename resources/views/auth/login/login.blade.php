@@ -17,9 +17,9 @@
     <!-- <div class="d-flex" style="align-items:center; justify-content:center;">
       <img src="{{ asset('image/atlas-black.png') }}" alt="" style="width:150px;">
     </div> -->
-    <div>
-      <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-          <img src="{{ asset('image/atlas-black.png') }}" style="width:150px;">
+    <div class="">
+      <div class="w-100 vh-100 d-flex logo-image" style="align-items:center; justify-content:center;">
+          <img src="{{ asset('image/atlas-black.png') }}" style="width:150px;padding-bottom:35px;">
           <div class="border vh-50 w-25" style="background-color: white; border-radius:8px;">
             <div class="w-75 m-auto pt-5">
               <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>

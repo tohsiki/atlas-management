@@ -5,9 +5,17 @@
     <div class="m-3 detail_container">
       <div class="p-3">
 
+
+      <div class="d-flex" style="justify-content: space-between;">
+         <div class="sub_category">
+           <!-- 投稿にサブカテゴリーの表示 -->
+          @foreach($post->subCategories as $sub_category)
+            <p><span class="btn-info" style="font-size: 13px; border-radius:5px; padding:4px">{{ $sub_category->sub_category }}</span></p>
+          @endforeach
+        </div>
+
         @if(Auth::user()->id == $post->user_id)
           <div class="detail_inner_head">
-            <div></div>
             <div>
               <span class="edit-modal-open btn btn-danger" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
               <!-- 削除ボタンの形式は確認が必要 -->
@@ -15,6 +23,7 @@
             </div>
           </div>
         @endif
+      </div>
 
         <div class="contributor d-flex">
           <p>
@@ -52,7 +61,9 @@
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
-        <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+        <div class=" text-right">
+          <input type="submit" class="btn btn-primary text-right" form="commentRequest" value="投稿">
+        </div>
         <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
       </div>
     </div>
