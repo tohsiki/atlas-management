@@ -4,8 +4,6 @@
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
       <div class="p-3">
-
-
       <div class="d-flex" style="justify-content: space-between;">
          <div class="sub_category">
            <!-- 投稿にサブカテゴリーの表示 -->

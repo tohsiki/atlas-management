@@ -2,8 +2,7 @@
 $(function () {
   $('.search_conditions').click(function () {
     $('.search_conditions_inner').slideToggle();
-
-     $(this).find('.menu-trigger').toggleClass('active');
+     $(this).find('.search-trigger').toggleClass('active');
   });
 
 

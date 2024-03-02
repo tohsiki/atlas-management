@@ -27,8 +27,8 @@ class CalendarView{
     $html[] = '<th class="border">水</th>';
     $html[] = '<th class="border">木</th>';
     $html[] = '<th class="border">金</th>';
-    $html[] = '<th class="border">土</th>';
-    $html[] = '<th class="border">日</th>';
+    $html[] = '<th class="border day-sat">土</th>';
+    $html[] = '<th class="border day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -42,8 +42,8 @@ class CalendarView{
         $startDay = $this->carbon->copy()->format("Y-m-01");
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
-        if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){
-          $html[] = '<td class="past-day border">';
+        if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
+          $html[] = '<td class="past-day border '.$day->getClassName().'">';
         }else{
           $html[] = '<td class="border '.$day->getClassName().'">';
         }
@@ -61,7 +61,7 @@ class CalendarView{
             $reservePart = "リモ3部";
           }
           // 処理終わったらtoDayから=取る。
-           if($startDay <= $day->everyDay() && $toDay >$day->everyDay()){
+           if($startDay <= $day->everyDay() && $toDay >=$day->everyDay()){
             // 予約している過去
             // $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;color:black">受付終了b</p>';
              $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;

@@ -4,7 +4,7 @@
 <!-- スクール予約画面 -->
 <!-- 以下のdivタグからvh-100を消した。もし課題に余裕があったらvh-100を戻してメインコンテンツをスクロールできるようにする。 -->
 <div class="pt-5" style="background:#ECF1F6;">
-  <div class="w-75 m-auto pt-5" style="border-radius:5px; background:#FFF;">
+  <div class="w-75 m-auto pt-5" style="border-radius:5px; background:#FFF; box-shadow: 0 0 8px rgba(0,0,0,0.2);">
     <div class="w-75 m-auto" style="border-radius:5px;">
       <p class="text-center">{{ $calendar->getTitle() }}</p>
       <div class="">

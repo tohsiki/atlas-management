@@ -30,13 +30,23 @@ class RegisterPostRequest extends FormRequest
         'under_name_kana'  => 'required|string|max:30|regex:/[ァ-ヴー]+/u',
         'mail_address' => 'required|email|unique:users|max:100',
         'sex' => 'required|in:1,2,3',
-        'old_year' => 'required|integer|min:2000|max:' . date('Y'),
-        'old_month' => 'required|integer|min:1|max:12',
-        'old_day' => 'required|integer|min:1|max:31',
+        'old_year' => 'required',
+        'old_month' => 'required',
+        'old_day' => 'required',
+        'date_of_birth' => 'date|after:2000-01-01|before:today',
         'role' => 'required|in:1,2,3,4',
         'password' => 'required|min:8|max:30|',
         'password_confirmation' => 'required|min:8|max:30|same:password'
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        // 日時をデータに追加
+        $date_of_birth = ($this->filled(['old_year','old_month','old_day'])) ? $this->old_year .'-'. $this->old_month .'-'. $this->old_day:'';
+        $this->merge([
+           'date_of_birth' => $date_of_birth
+        ]);
     }
 
    public function messages()
@@ -55,17 +65,11 @@ class RegisterPostRequest extends FormRequest
         'sex.required' => '性別は必須です。',
         'sex.in' => '性別は男, 女, その他のいずれかを選択してください。',
         'old_year.required' => '年を入力してください。',
-        'old_year.integer' => '年は整数で入力してください。',
-        'old_year.min' => '年は2000年以上で入力してください。',
-        'old_year.max' => '年は現在の年より小さい値で入力してください。',
         'old_month.required' => '月を入力してください。',
-        'old_month.integer' => '月は整数で入力してください。',
-        'old_month.min' => '月は1以上で入力してください。',
-        'old_month.max' => '月は12以下で入力してください。',
         'old_day.required' => '日を入力してください。',
-        'old_day.integer' => '日は整数で入力してください。',
-        'old_day.min' => '日は1以上で入力してください。',
-        'old_day.max' => '日は31以下で入力してください。',
+        'date_of_birth.date' => '正しい日付を入力してください。',
+        'date_of_birth.after' => '生年月日は2000年1月1日以降の日付を入力してください。',
+        'date_of_birth.before' => '生年月日は今日までの日付を入力してください。',
         'role.required' => '役職の選択は必須です。',
         'role.in' => '役職は教師(国語), 教師(数学), 教師(英語), 生徒のいずれかを選択してください。',
         'password.required' => 'パスワードは必須です。',

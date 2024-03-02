@@ -22,7 +22,7 @@
       @section('sidebar')
       <!-- トップ -->
       <div class="d-flex" style="align-items:left; justify-content:space-between; margin-left:5px;">
-        <a href="{{ route('top.show') }}" style="text-decoration: none; color:white;" class="d-flex">
+        <a href="{{ route('top.show') }}" style="text-decoration: none; color:white;" class="d-flex side-icon">
           <img src="{{ asset('image/house-solid.svg') }}" style="width:20px; margin-right:10px;">
           <p style=" font-size:15px;margin-top:1rem;">トップ</p>
         </a>

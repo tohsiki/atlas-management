@@ -47,7 +47,7 @@
       <div class="d-flex">
         <!-- フォームと検索ボタンをくっつける。
        -->
-        <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest" style="background-color: rgba(0, 0, 0, 0.05);outline: none; border: 1px solid #ccc; width: 70%;">
+        <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest" style="background-color: rgba(0, 0, 0, 0.05);outline: none; border: 1px solid #ccc; width:70%;border-radius:5px;">
         <div class="search-button" style="width: 30%;">
           <input type="submit" value="検索" form="postSearchRequest" class="btn btn-info" style="width: 100%; ">
         </div>
@@ -55,7 +55,7 @@
 
       <!-- いいね投稿と自分の投稿 -->
       <div class="d-flex" style="margin-top:20px; justify-content: space-between;">
-        <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest" style="background: #e17397; opacity: 0.75; width: 49%; height:40px;">
+        <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest" style="background: #e17397;  width: 49%; height:40px;">
 
         <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest" style="background: #eeb12e; width: 49%; height:40px;">
       </div>

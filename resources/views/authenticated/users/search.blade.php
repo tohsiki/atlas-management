@@ -1,15 +1,16 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="search_content w-100 border d-flex">
+<div class="search_content w-100 border d-flex vh-100" >
   <div class="reserve_users_area">
     @foreach($users as $user)
-    <div class="border one_person" style="border-radius:8px; color:rgba(0, 0, 0, 0.8);">
-      <div style="margin-left:5px;">
+    <div class="border one_person" style="border-radius:8px; color:rgba(0, 0, 0, 0.8); box-shadow: 0 0 8px rgba(0,0,0,0.2);">
+      <table style="margin-left:5px;">
         <div>
           <span style="color:rgba(0, 0, 0, 0.5);">ID : </span><span>{{ $user->id }}</span>
         </div>
-        <div><span style="color:rgba(0, 0, 0, 0.5);">名前 : </span>
+        <div>
+          <span style="color:rgba(0, 0, 0, 0.5);">名前 : </span>
           <a href="{{ route('user.profile', ['id' => $user->id]) }}" class="text-info">
             <span>{{ $user->over_name }}</span>
             <span>{{ $user->under_name }}</span>
@@ -52,7 +53,7 @@
           @endforeach
           @endif
         </div>
-      </div>
+      </table>
     </div>
     @endforeach
   </div>
@@ -82,8 +83,8 @@
       <div class="" style=" margin-top:15px;">
         <!-- モーダル -->
          <div class="d-flex search_conditions" style="align-items:center; justify-content: space-between;border-bottom:solid 1px rgba(0, 0, 0, 0.3);">
-          <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
-            <div class="menu-trigger">
+          <p class="m-0"><span>検索条件の追加</span></p>
+            <div class="search-trigger">
               <span></span>
               <span></span>
             </div>
@@ -118,7 +119,7 @@
       </div>
 
       <div class="d-flex" style="justify-content:center;">
-        <input class="text-info reset-btn" type="reset" value="リセット" form="userSearchRequest">
+        <a href="{{ route('user.show') }}" class="text-info">リセット</a>
       </div>
     </div>
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
