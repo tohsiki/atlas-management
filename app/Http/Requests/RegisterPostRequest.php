@@ -33,7 +33,7 @@ class RegisterPostRequest extends FormRequest
         'old_year' => 'required',
         'old_month' => 'required',
         'old_day' => 'required',
-        'date_of_birth' => 'date|after:2000-01-01|before:today',
+        'date_of_birth' => 'date|after:1999-12-31|before:today',
         'role' => 'required|in:1,2,3,4',
         'password' => 'required|min:8|max:30|',
         'password_confirmation' => 'required|min:8|max:30|same:password'
