@@ -63,28 +63,13 @@ class PostsController extends Controller
 
     // 投稿用の処理
    public function postCreate(PostFormRequest $request){
-    $validatedData = $request->validate([
-        'post_category_id' => 'required',
-        'post_title' => 'required|string|max:100',
-        'post_body' => 'required|string|max:5000',
-    ], [
-        'post_category_id.required' => 'カテゴリーの選択は必須です。',
-        'post_category_id.exists' => '指定されたカテゴリーは存在しません。',
-        'post_title.required' => 'タイトルは必須です。',
-        'post_title.string' => 'タイトルは文字で入力してください。',
-        'post_title.max' => 'タイトルは100文字以内で入力してください。',
-        'post_body.required' => '本文は必須です。',
-        'post_body.string' => '本文は文字で入力してください。',
-        'post_body.max' => '本文は5000文字以内で入力してください.',
-    ]);
     $post = Post::create([
-        'post_category_id' => $validatedData['post_category_id'],
-        'post_title' => $validatedData['post_title'],
-        'post' => $validatedData['post_body'],
+        'user_id' => Auth::id(),
+        'post_title' => $request->post_title,
+        'post' => $request->post_body,
     ]);
-
+    // $post→モデルのメソッド名→変数request→name名
     $post->subCategories()->attach($request->post_category_id);
-
     return redirect()->route('post.show');
 }
 
