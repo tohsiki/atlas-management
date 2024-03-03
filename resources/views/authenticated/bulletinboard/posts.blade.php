@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 @section('content')
 <div class="board_area w-100 border m-auto d-flex">
-  <div class="post_view mt-5" style="width:72%;">
+  <div class="post_view mt-5 " style="width:72%;height:100vh;overflow:scroll;">
     <!-- 投稿を囲っているところ -->
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
