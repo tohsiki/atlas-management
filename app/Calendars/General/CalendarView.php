@@ -89,7 +89,7 @@ class CalendarView{
         }else{
           //予約をしていない場合
           // ここに過去と未来のif文を足す
-          if($startDay <= $day->everyDay() && $toDay >$day->everyDay()){
+          if($startDay <= $day->everyDay() && $toDay >=$day->everyDay()){
             //予約をしていない過去
               $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px;color:black">受付終了</p>';
               $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';

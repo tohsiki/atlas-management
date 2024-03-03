@@ -12,10 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #ECF1F6;">
   <form action="{{ route('registerPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="vh-75 p-3" style="box-shadow: 0 0 8px rgba(0,0,0,0.3); border-radius:10px; width:25%;">
+    <div class="w-100  d-flex" style="align-items:center; justify-content:center;height:120vh;">
+      <div class="vh-75 p-3" style="background-color:white;box-shadow: 0 0 8px rgba(0,0,0,0.3); border-radius:10px; width:30%; margin-top:20px; margin-bottom:20px;justify-content:center;">
         <div class="register_form">
           <div class="d-flex mt-3" style="justify-content:space-between">
                 @if($errors->first('over_name'))
@@ -39,19 +39,19 @@
             </div>
           </div>
           <div class="d-flex mt-3" style="justify-content:space-between">
-                @if($errors->first('over_name_kana'))
-                   <span class="error_message">{{ $errors->first('over_name_kana') }}</span>
-                @endif
-                @if($errors->first('under_name_kana'))
-                  <span class="error_message">{{ $errors->first('under_name_kana') }}</span>
-                @endif
             <div class="" style="width:140px">
+              @if($errors->first('over_name_kana'))
+                <span class="error_message">{{ $errors->first('over_name_kana') }}</span>
+              @endif
               <label class="d-block m-0" style="font-size:13px">セイ</label>
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
             </div>
             <div class="" style="width:140px">
+                @if($errors->first('under_name_kana'))
+                  <span class="error_message">{{ $errors->first('under_name_kana') }}</span>
+                @endif
               <label class="d-block m-0" style="font-size:13px">メイ</label>
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">

@@ -293,9 +293,10 @@ a{
 }
 .one_person{
   background:#FFF;
-  width:220px;
-  height:240px;
+  width:180px;
+  height:200px;
   margin: 5px;
+  /* margin-left:5px; */
 }
 .search_conditions span{
   cursor:pointer;

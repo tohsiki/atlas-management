@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
-<body style="background-color: #f0f0f0;">
+<body style="background-color:#ECF1F6;">
   <form action="{{ route('loginPost') }}" method="POST">
     <!-- <div class="d-flex" style="align-items:center; justify-content:center;">
       <img src="{{ asset('image/atlas-black.png') }}" alt="" style="width:150px;">
@@ -20,7 +20,7 @@
     <div class="">
       <div class="w-100 vh-100 d-flex logo-image" style="align-items:center; justify-content:center;">
           <img src="{{ asset('image/atlas-black.png') }}" style="width:150px;padding-bottom:35px;">
-          <div class="border vh-50 w-25" style="background-color: white; border-radius:8px;">
+          <div class="border vh-50 w-25" style="background-color: white; border-radius:8px; box-shadow: 0 0 8px rgba(0,0,0,0.2);">
             <div class="w-75 m-auto pt-5">
               <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
               <div class="border-bottom border-primary w-100">
